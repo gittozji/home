@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="WEB-INF/application.properties"/>
+    <context:component-scan base-package="me.imyu.home.service.impl"/>
+
+    <!-- 持久化层配置 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="configLocation" value="WEB-INF/mybatis-config.xml"/>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath:me/imyu/home/dao/impl/**.xml"/>
+        <property name="typeAliasesPackage" value="me.imyu.home.model"/>
+    </bean>
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="${base.jdbc.driver}"/>
+        <property name="url" value="${base.jdbc.url}"/>
+        <property name="username" value="${base.jdbc.username}"/>
+        <property name="password" value="${base.jdbc.password}"/>
+    </bean>
+
+    <!-- 扫描DAO -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="me.imyu.home.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+</beans>
