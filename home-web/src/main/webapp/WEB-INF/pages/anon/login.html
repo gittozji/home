@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>登录</title>
+</head>
+<body>
+<div class="container">
+    <div class="card z-depth-4 main-card">
+        <div class="container">
+            <form id="loginForm" class="row" th:action="@{/anon/dologin.do}" method="post" autocomplete="off">
+                <div class="col s12 title-head"><h5 class="center-align">用户登录</h5></div>
+                <div class="col s12">
+                    <label for="username_id">用户名</label>
+                    <input id="username_id" type="text" class="required {numberOrEnglish:true}" minlength="4" maxlength="20"  name="username"/>
+                </div>
+                <div class="col s12">
+                    <label for="password_id">密码</label>
+                    <input id="password_id" type="password" class="required" minlength="4" maxlength="20" name="password"/>
+                </div>
+                <div class="row">
+                    <button class="btn waves-effect waves-light col s10 offset-s1">登录</button>
+                </div>
+                <div class="row">
+                </div>
+            </form>
+        </div>
+        <div class="card-action">
+            <a href="sign.html">现在注册！</a>
+            <a href='#' class="right">忘记密码？</a>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

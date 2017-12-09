@@ -27,4 +27,26 @@
         <property name="basePackage" value="me.imyu.home.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
+
+    <!-- 安全集成 -->
+    <bean class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/login.html"/>
+        <property name="successUrl" value="/welcome.html"/>
+        <property name="filterChainDefinitions">
+            <value>
+                /login.html = $authc
+            </value>
+        </property>
+    </bean>
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="cacheManager" ref="cacheManager"/>
+        <property name="realm" ref="realm"/>
+    </bean>
+    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"/>
+    <bean id="realm" class="me.imyu.home.security.realm.SimpleRealm">
+        <property name="credentialsMatcher" ref="passwordMatcher"/>
+    </bean>
+    <bean id="passwordMatcher" class="org.apache.shiro.authc.credential.PasswordMatcher"/>
 </beans>

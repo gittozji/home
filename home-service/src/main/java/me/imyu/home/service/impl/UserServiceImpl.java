@@ -20,4 +20,9 @@ public class UserServiceImpl implements UserService {
     public List<User> queryAll() {
         return userDao.selectAll();
     }
+
+    @Override
+    public User findByUsername(String username) {
+        return null;
+    }
 }
