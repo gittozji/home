@@ -4,4 +4,7 @@
     <select id="selectAll" resultType="User">
         SELECT * FROM user
     </select>
+    <select id="selectByUsername" resultType="User" parameterType="java.lang.String">
+        SELECT * FROM user WHERE username = #{username}
+    </select>
 </mapper>

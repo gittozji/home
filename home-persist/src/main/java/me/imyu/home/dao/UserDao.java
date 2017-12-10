@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface UserDao {
     List<User> selectAll();
+    User selectByUsername(String username);
 }

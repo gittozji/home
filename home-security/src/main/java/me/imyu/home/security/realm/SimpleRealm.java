@@ -4,8 +4,12 @@ import me.imyu.home.model.User;
 import me.imyu.home.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by imyu on 2017/12/9.
@@ -14,12 +18,28 @@ public class SimpleRealm extends AuthorizingRealm{
 
     UserService userService;
 
+    public UserService getUserService() {
+        return userService;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
     public SimpleRealm() {
 
     }
 
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        return null;
+        String username = (String) principalCollection.getPrimaryPrincipal();
+        SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+        Set<String> roles = new HashSet<String>();
+        roles.add("leader");
+        Set<String> permissions = new HashSet<String>();
+        permissions.add("user:view");
+        simpleAuthorizationInfo.setRoles(roles);
+        simpleAuthorizationInfo.setStringPermissions(permissions);
+        return simpleAuthorizationInfo;
     }
 
     @Override
