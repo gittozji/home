@@ -5,6 +5,8 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,17 +15,26 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * 登录退出控制器
+ *
  * Created by imyu on 2017/12/9.
  */
 @Controller
 public class LoginController {
+    private final static Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
+
+    /**
+     * 登录页面请求
+     *
+     * @return
+     */
     @RequestMapping(path = "/login")
     public ModelAndView list() {
         return new ModelAndView("anon/login");
     }
 
     /**
-     * Action 登录
+     * 登录动作
      *
      * @return
      */

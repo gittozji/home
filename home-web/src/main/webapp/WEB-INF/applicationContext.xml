@@ -34,11 +34,6 @@
         <property name="securityManager" ref="securityManager"/>
         <property name="loginUrl" value="/login.html"/>
         <property name="successUrl" value="/welcome.html"/>
-        <property name="filterChainDefinitions">
-            <value>
-                /login.html = $authc
-            </value>
-        </property>
     </bean>
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="cacheManager" ref="cacheManager"/>
