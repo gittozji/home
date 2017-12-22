@@ -29,8 +29,13 @@ public class LoginController {
      * @return
      */
     @RequestMapping(path = "/login")
-    public ModelAndView list() {
-        return new ModelAndView("anon/login");
+    public String list() {
+        return "/WEB-INF/pages/login.html";
+    }
+
+    @RequestMapping(path = "/test")
+    public String test() {
+        return "/test.html";
     }
 
     /**

@@ -15,24 +15,9 @@
     </mvc:annotation-driven>
     <context:component-scan base-package="me.imyu.home.web"/>
 
-    <!-- 视图解析 -->
-    <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
-        <property name="templateEngine" ref="templateEngine"/>
-        <property name="characterEncoding" value="UTF-8"/>
-    </bean>
-    <bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
-        <property name="templateResolver" ref="templateResolver"/>
-    </bean>
-    <bean id="templateResolver" class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
-        <property name="prefix" value="/WEB-INF/pages/"/>
-        <property name="suffix" value=".html"/>
-        <property name="templateMode" value="HTML5"/>
-        <property name="cacheable" value="false"/>
-        <property name="characterEncoding" value="UTF-8"/>
-    </bean>
-
     <!-- 静态资源 -->
-    <mvc:resources mapping="/static/**" location="WEB-INF/resources/"/>
+    <mvc:resources mapping="/**/*.html" location="/"/>
+    <mvc:resources mapping="/static/**" location="/resources/"/>
 
     <!-- Controller支持shiro权限控制 -->
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
