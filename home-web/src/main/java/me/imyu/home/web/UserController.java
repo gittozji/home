@@ -1,6 +1,5 @@
 package me.imyu.home.web;
 
-import me.imyu.home.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -14,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * 用户控制器
  *
- * Created by imyu on 2017-12-06.
+ * Created by imyu on 2017-12-24.
  */
 @Controller
 public class UserController {

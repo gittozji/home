@@ -9,11 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>home-web</module>
-        <module>home-service</module>
-        <module>home-persist</module>
-        <module>home-model</module>
-        <module>home-utils</module>
-        <module>home-security</module>
+        <module>home-base</module>
     </modules>
     <packaging>pom</packaging>
 
