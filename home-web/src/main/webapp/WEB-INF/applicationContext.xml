@@ -6,14 +6,13 @@
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder location="WEB-INF/application.properties"/>
-    <context:component-scan base-package="me.imyu.home.service.impl"/>
+    <context:component-scan base-package="me.imyu.home.base.service.impl"/>
 
     <!-- 持久化层配置 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="configLocation" value="WEB-INF/mybatis-config.xml"/>
         <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath:me/imyu/home/dao/impl/**.xml"/>
-        <property name="typeAliasesPackage" value="me.imyu.home.model"/>
+        <property name="mapperLocations" value="classpath:me/imyu/home/base/dao/impl/**.xml"/>
     </bean>
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
         <property name="driverClassName" value="${base.jdbc.driver}"/>
@@ -27,21 +26,4 @@
         <property name="basePackage" value="me.imyu.home.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
-
-    <!-- 安全集成 -->
-    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-        <property name="securityManager" ref="securityManager"/>
-        <property name="loginUrl" value="/login.html"/>
-        <property name="successUrl" value="/welcome.html"/>
-    </bean>
-    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-        <property name="cacheManager" ref="cacheManager"/>
-        <property name="realm" ref="realm"/>
-    </bean>
-    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"/>
-    <bean id="realm" class="me.imyu.home.base.security.SimpleRealm">
-        <property name="credentialsMatcher" ref="passwordMatcher"/>
-        <property name="userService" ref="userServiceImpl"/>
-    </bean>
-    <bean id="passwordMatcher" class="org.apache.shiro.authc.credential.PasswordMatcher"/>
 </beans>
