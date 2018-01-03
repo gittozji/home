@@ -1,5 +1,6 @@
 package me.imyu.home.base.model.dto;
 
+import me.imyu.home.base.service.ServiceException;
 import org.springframework.util.StringUtils;
 
 import java.io.Serializable;
@@ -28,7 +29,7 @@ public class ResultBean<T> implements Serializable {
     /**
      * 未知的错误信息
      */
-    private static final String UNKNOWN_INFO = "未知的错误";
+    private static final String UNKNOWN_INFO = "系统服务异常";
     private static final String SUCCESS_INFO = "请求成功";
 
     private String info = SUCCESS_INFO;
@@ -48,7 +49,10 @@ public class ResultBean<T> implements Serializable {
 
     public ResultBean(Throwable e) {
         super();
-        this.info = StringUtils.isEmpty(e.getMessage()) ? UNKNOWN_INFO : e.getMessage();
+        if (e instanceof ServiceException) {
+            this.info = e.getMessage();
+        }
+        this.info = UNKNOWN_INFO;
         this.status = FAIL;
     }
 
@@ -82,7 +86,10 @@ public class ResultBean<T> implements Serializable {
     }
 
     public void setException(Throwable e) {
-        this.info = StringUtils.isEmpty(e.getMessage()) ? UNKNOWN_INFO : e.getMessage();
+        if (e instanceof ServiceException) {
+            this.info = e.getMessage();
+        }
+        this.info = UNKNOWN_INFO;
         this.status = FAIL;
     }
 }

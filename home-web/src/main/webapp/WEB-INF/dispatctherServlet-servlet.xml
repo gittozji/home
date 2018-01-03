@@ -16,7 +16,5 @@
     <context:component-scan base-package="me.imyu.home.web"/>
 
     <!-- 静态资源 -->
-    <mvc:resources mapping="/**/*.html" location="/,classpath:me/imyu/home/base/html/"/>
-    <mvc:resources mapping="/static/**" location="/resources/"/>
-
+    <mvc:resources mapping="/base/**/*.html" location="/,classpath:me/imyu/home/base/statics/"/>
 </beans>
