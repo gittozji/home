@@ -10,6 +10,7 @@
     <modules>
         <module>home-web</module>
         <module>home-base</module>
+        <module>home-auth</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -141,7 +142,4 @@
 
         </dependencies>
     </dependencyManagement>
-
-
-
 </project>
