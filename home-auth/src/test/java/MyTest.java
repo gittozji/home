@@ -1,4 +1,3 @@
-import me.imyu.home.auth.util.SHA256Utils;
 import org.junit.Test;
 import sun.misc.BASE64Encoder;
 
@@ -20,7 +19,7 @@ public class MyTest {
 
     @Test
     public void f1() {
-        System.out.println(SHA256Utils.sha256("123456", "324").length());
+
     }
 
     @Test
