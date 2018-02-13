@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void login(String username, String password, HttpServletRequest request, HttpServletResponse response) {
         User user = userDao.selectByUsername(username);
-        if (user == null || password.equals(user.getPassword())) {
+        if (user == null || !password.equals(user.getPassword())) {
             throw new ServiceException("用户名或密码错误！");
         }
 

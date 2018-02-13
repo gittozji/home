@@ -7,9 +7,9 @@ import java.io.Serializable;
 
 /**
  * 统一返回对象
- *
+ * <p>
  * 参考自：https://zhuanlan.zhihu.com/p/28717374
- *
+ * <p>
  * Created by imyu on 2017-12-24.
  */
 public class ResultBean<T> implements Serializable {
@@ -51,8 +51,9 @@ public class ResultBean<T> implements Serializable {
         super();
         if (e instanceof ServiceException) {
             this.info = e.getMessage();
+        } else {
+            this.info = UNKNOWN_INFO;
         }
-        this.info = UNKNOWN_INFO;
         this.status = FAIL;
     }
 

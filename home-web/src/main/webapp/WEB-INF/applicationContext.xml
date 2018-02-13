@@ -23,7 +23,7 @@
 
     <!-- 扫描DAO -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="me.imyu.home.dao"/>
+        <property name="basePackage" value="me.imyu.home.base.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 </beans>
