@@ -5,12 +5,15 @@ import java.util.Map;
 /**
  * Created by imyu on 2018-01-26.
  */
-public class JWT {
+public class Jwt {
     Map header;
     Map payload;
     String secret;
 
-    public JWT(Map header, Map payload, String secret) {
+    public Jwt() {
+    }
+
+    public Jwt(Map header, Map payload, String secret) {
         this.header = header;
         this.payload = payload;
         this.secret = secret;

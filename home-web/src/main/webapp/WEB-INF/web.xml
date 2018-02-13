@@ -39,4 +39,9 @@
         <param-name>log4jConfiguration</param-name>
         <param-value>/WEB-INF/log4j2.xml</param-value>
     </context-param>
+
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/error.jsp</location>
+    </error-page>
 </web-app>
