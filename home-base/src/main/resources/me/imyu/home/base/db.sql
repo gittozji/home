@@ -1,0 +1,11 @@
+DROP TABLE
+IF EXISTS `home_user`;
+
+CREATE TABLE `home_user` (
+	`id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+	`username` CHAR (20) NOT NULL,
+	`password` VARCHAR (60) NOT NULL,
+	`error_count` TINYINT UNSIGNED NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `unique_index_user` (`username`) USING BTREE
+) ENGINE = INNODB DEFAULT CHARSET = utf8;

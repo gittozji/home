@@ -8,4 +8,6 @@ import me.imyu.home.base.model.User;
  */
 public interface UserDao {
     User selectByUsername(String username);
+
+    void updateErrorCount(User user);
 }

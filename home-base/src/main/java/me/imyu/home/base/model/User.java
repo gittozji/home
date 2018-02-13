@@ -7,6 +7,7 @@ package me.imyu.home.base.model;
 public class User extends Id {
     private String username;
     private String password;
+    private Integer errorCount;
 
     public String getUsername() {
         return username;
@@ -22,5 +23,13 @@ public class User extends Id {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Integer getErrorCount() {
+        return errorCount;
+    }
+
+    public void setErrorCount(Integer errorCount) {
+        this.errorCount = errorCount;
     }
 }

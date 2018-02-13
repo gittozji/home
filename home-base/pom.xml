@@ -81,6 +81,14 @@
             <artifactId>log4j-web</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>me.imyu</groupId>
+            <artifactId>home-auth</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

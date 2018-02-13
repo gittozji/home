@@ -2,6 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="me.imyu.home.base.dao.UserDao">
     <select id="selectByUsername" resultType="me.imyu.home.base.model.User" parameterType="java.lang.String">
-        SELECT * FROM user WHERE username = #{username}
+        SELECT id, username, password, error_count errorCount FROM home_user WHERE username = #{username}
     </select>
+    <update id="updateErrorCount" parameterType="me.imyu.home.base.model.User">
+        UPDATE home_user SET error_count = #{errorCount} WHERE id = #{id}
+    </update>
 </mapper>
