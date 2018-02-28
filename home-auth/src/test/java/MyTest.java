@@ -31,4 +31,9 @@ public class MyTest {
         String src = "12345";
         System.out.println(src.substring(0, src.length()));
     }
+
+    @Test
+    public void f2() {
+
+    }
 }

@@ -1,5 +1,6 @@
 package me.imyu.home.base.service.impl;
 
+import me.imyu.home.auth.jwt.Crypto;
 import me.imyu.home.auth.jwt.Jwt;
 import me.imyu.home.auth.jwt.JwtParser;
 import me.imyu.home.base.dao.UserDao;
@@ -30,7 +31,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public void login(String username, String password, HttpServletRequest request, HttpServletResponse response) {
         User user = userDao.selectByUsername(username);
-        if (user == null || !password.equals(user.getPassword())) {
+        if (user == null) {
+            throw new ServiceException("用户名或密码错误！");
+        }
+
+        if (!Crypto.sign(password).equals(user.getPassword())) {
+            user.setErrorCount(user.getErrorCount() + 1);
+            userDao.updateErrorCount(user);
             throw new ServiceException("用户名或密码错误！");
         }
 
@@ -45,7 +52,7 @@ public class UserServiceImpl implements UserService {
         Map header = new HashMap();
         header.put("expireAt", System.currentTimeMillis() + 2 * 24 * 60 * 60 * 1000); // 两天的过期时间
         Map payload = new HashMap();
-        payload.put("username", user);
+        payload.put("user", user);
         Jwt jwt = new Jwt(header, payload, null);
         String token = JwtParser.parseStr(jwt);
 
@@ -54,5 +61,4 @@ public class UserServiceImpl implements UserService {
         cookie.setPath("/");
         response.addCookie(cookie);
     }
-
 }

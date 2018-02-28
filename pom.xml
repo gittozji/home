@@ -11,6 +11,7 @@
         <module>home-web</module>
         <module>home-base</module>
         <module>home-auth</module>
+        <module>home-file</module>
     </modules>
     <packaging>pom</packaging>
 

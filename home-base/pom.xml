@@ -89,6 +89,10 @@
             <groupId>me.imyu</groupId>
             <artifactId>home-auth</artifactId>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
