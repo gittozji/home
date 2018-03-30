@@ -18,7 +18,9 @@
         <bean class="me.imyu.home.web.interceptor.JwtBinderInterceptor"/>
     </mvc:interceptors>
 
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 
+    </bean>
 
 
 

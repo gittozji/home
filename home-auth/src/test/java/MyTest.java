@@ -36,4 +36,10 @@ public class MyTest {
     public void f2() {
 
     }
+
+    @Test
+    public void f41() {
+        String str = "xxx.png";
+        System.out.println(str.substring(0, str.indexOf(".")));
+    }
 }

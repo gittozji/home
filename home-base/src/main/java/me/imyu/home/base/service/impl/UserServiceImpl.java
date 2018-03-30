@@ -57,6 +57,7 @@ public class UserServiceImpl implements UserService {
         String token = JwtParser.parseStr(jwt);
 
         Cookie cookie = new Cookie("token",token);
+        cookie.setHttpOnly(true);
         cookie.setMaxAge(2 * 24 * 60 * 60);// 两天的过期时间
         cookie.setPath("/");
         response.addCookie(cookie);
