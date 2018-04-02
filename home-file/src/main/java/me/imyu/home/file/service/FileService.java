@@ -1,10 +1,12 @@
 package me.imyu.home.file.service;
 
-import java.io.InputStream;
+import org.apache.commons.fileupload.FileUploadException;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by imyu on 2018-02-28.
  */
 public interface FileService {
-    void upload(String fileName, InputStream in);
+    String upload(HttpServletRequest request) throws Exception;
 }

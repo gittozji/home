@@ -40,6 +40,6 @@ public class MyTest {
     @Test
     public void f41() {
         String str = "xxx.png";
-        System.out.println(str.substring(0, str.indexOf(".")));
+        System.out.println(str.substring(str.lastIndexOf(".")));
     }
 }
