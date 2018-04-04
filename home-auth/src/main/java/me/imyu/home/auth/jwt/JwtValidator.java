@@ -8,7 +8,7 @@ import java.util.Map;
  * Created by imyu on 2018-01-31.
  */
 public class JwtValidator {
-    public static void validate(String src) throws AuthException{
+    public static Jwt validate(String src) throws AuthException{
         int index = src.lastIndexOf(".");
         String headerAndPayload = src.substring(0, index);
         String scret = src.substring(index + 1, src.length());
@@ -22,5 +22,6 @@ public class JwtValidator {
         if (expireAt < System.currentTimeMillis()) {
             throw new AuthException(AuthConstants.EXPIRE_TOKEN);
         }
+        return jwt;
     }
 }
