@@ -18,13 +18,10 @@
         <bean class="me.imyu.home.web.interceptor.JwtBinderInterceptor"/>
     </mvc:interceptors>
 
-
-
-
     <context:component-scan base-package="me.imyu.home"/>
 
 
     <!-- 静态资源 -->
     <mvc:resources mapping="/base/**/*.html" location="classpath:me/imyu/home/base/statics/"/>
-    <mvc:resources mapping="/file/**/*.html" location="classpath:me/imyu/home/file/statics/"/>
+    <mvc:resources mapping="/base/*" location="classpath:me/imyu/home/base/statics/"/>
 </beans>
