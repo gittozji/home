@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.imyu.home.file.dao.FileTagDao">
+    <insert id="insertFile" parameterType="me.imyu.home.file.model.File">
+        INSERT INTO `home_file` (user_id, uuid, name, type, level)
+        VALUES (#{userId}, #{uuid}, #{name}, #{type}, #{level})
+    </insert>
+
+    <insert id="insertTag" parameterType="me.imyu.home.file.model.Tag">
+        INSERT INTO `home_tag` (`name`, user_id) VALUES (#{name}, #{userId})
+    </insert>
+
+    <insert id="insertFileTag" parameterType="me.imyu.home.file.model.FileTag">
+        INSERT INTO `home_file_tag` (tag_id, file_id) VALUES (#{tagId}, #{fileId})
+    </insert>
+</mapper>

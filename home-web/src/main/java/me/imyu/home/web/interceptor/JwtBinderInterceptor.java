@@ -3,6 +3,8 @@ package me.imyu.home.web.interceptor;
 import me.imyu.home.auth.jwt.Jwt;
 import me.imyu.home.auth.jwt.JwtBinder;
 import me.imyu.home.auth.jwt.JwtParser;
+import me.imyu.home.base.model.User;
+import me.imyu.home.base.util.UserBinder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,14 +34,16 @@ public class JwtBinderInterceptor extends HandlerInterceptorAdapter {
         } else {
             LOGGER.info("没有cookies");
         }
-
+        Jwt jwt = null;
+        User user = null;
         if (token.isEmpty()) {
-            JwtBinder.bind(null);
             LOGGER.info("没有token");
         } else {
-            Jwt jwt = JwtParser.parseJWT(token);
-            JwtBinder.bind(jwt);
+            jwt = JwtParser.parseJWT(token);
+            user = (User) jwt.getPayload().get("user");
         }
+        JwtBinder.bind(jwt);
+        UserBinder.bind(user);
 
         return super.preHandle(request, response, handler);
     }
