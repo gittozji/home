@@ -6,7 +6,6 @@
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder location="WEB-INF/application.properties"/>
-    <context:component-scan base-package="me.imyu.home.base.service.impl"/>
 
     <!-- 持久化层配置 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

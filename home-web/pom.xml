@@ -20,6 +20,10 @@
             <artifactId>home-auth</artifactId>
         </dependency>
         <dependency>
+            <groupId>me.imyu</groupId>
+            <artifactId>home-file</artifactId>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>

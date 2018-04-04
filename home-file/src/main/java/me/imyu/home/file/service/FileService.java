@@ -1,12 +1,12 @@
 package me.imyu.home.file.service;
 
-import org.apache.commons.fileupload.FileUploadException;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 
 /**
  * Created by imyu on 2018-02-28.
  */
 public interface FileService {
-    String upload(HttpServletRequest request) throws Exception;
+    String upload(CommonsMultipartFile file) throws IOException;
 }
