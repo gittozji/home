@@ -30,4 +30,7 @@
         <property name="basePackage" value="me.imyu.home.**.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
+
+    <!-- 邮件 -->
+
 </beans>
