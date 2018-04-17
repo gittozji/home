@@ -1,6 +1,7 @@
 package me.imyu.home.base.web;
 
 import me.imyu.home.base.model.dto.ResultBean;
+import me.imyu.home.base.service.EmailService;
 import me.imyu.home.base.service.UserService;
 import me.imyu.home.base.util.SAssert;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,13 @@ public class LoginController {
     private static final int ERROR_COUNT = 5;
     @Autowired
     UserService userService;
+    @Autowired
+    EmailService emailService;
     @RequestMapping("/base/login")
     public ResultBean login(String username, String password, HttpServletRequest request, HttpServletResponse response) {
+
+        emailService.send(username, "IP地址变更通知。。。", "IP地址变更通知。。。");
+
         SAssert.hasLength(username, "用户名不能为空！");
         SAssert.hasLength(password, "密码不能为空！");
 
